@@ -35,6 +35,7 @@
         { "number": 1, "dow": "SATURDAY" },
         { "number": 2, "dow": "SUNDAY"   }
       ]
+    }
   ]
 }
 ```
