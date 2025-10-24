@@ -53,7 +53,10 @@ cp .env.exmaple .env
 ```
 3. **Запустите контейнер с помощью Docker Compose**:
 ```bash
-docker compose up -d
+docker-compose up -d
+```
+```bash
+docker-compose --env-file .env up -d
 ```
 
 По умолчанию приложение доступно по адресу http://localhost:8080
