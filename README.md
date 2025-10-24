@@ -18,18 +18,23 @@
 
 ```json
 {
-  "year": int,
+  "year": 2025,
   "months": [
     {
-      "number": int,
-      "month": String,
+      "number": 1,
+      "month": "JANUARY",
       "days": [
-        { "number": int, "dow": String },
-        { "number": int, "dow": String }
-        // ... 
+        { "number": 1, "dow": "WEDNESDAY"},
+        { "number": 2, "dow": "THURSDAY" }
       ]
-    }
-    // ...
+    },
+    {
+      "number": 2,
+      "month": "FEBRUARY",
+      "days": [
+        { "number": 1, "dow": "SATURDAY" },
+        { "number": 2, "dow": "SUNDAY"   }
+      ]
   ]
 }
 ```
