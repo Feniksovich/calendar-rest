@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: rest-calendar
+  cache:
+    type: caffeine
+    cache-names: [calendars]
+    caffeine:
+      spec: maximumSize=${CAL_CACHE_MAX_SIZE:100},expireAfterAccess=${CAL_CACHE_TTL:24h}
