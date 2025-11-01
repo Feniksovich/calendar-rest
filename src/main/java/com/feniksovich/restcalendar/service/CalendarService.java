@@ -1,7 +1,7 @@
 package com.feniksovich.restcalendar.service;
 
-import com.feniksovich.restcalendar.dto.calendar.CalendarData;
+import com.feniksovich.restcalendar.dto.CalendarDto;
 
 public interface CalendarService {
-    CalendarData getCalendar(int yearNumber);
+    CalendarDto getCalendar(int yearNumber);
 }

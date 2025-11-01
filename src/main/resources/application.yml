@@ -2,10 +2,17 @@ spring:
   application:
     name: rest-calendar
   cache:
-    type: caffeine
-    cache-names: [calendars]
-    caffeine:
-      spec: maximumSize=${CAL_CACHE_MAX_SIZE:100},expireAfterAccess=${CAL_CACHE_TTL:24h}
+    type: redis
+    cache-names: calendars
+    redis:
+      time-to-live: ${CAL_CACHE_TTL:24h}
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      database: ${REDIS_DB:0}
+      username: ${REDIS_USERNAME:default}
+      password: ${REDIS_PASSWORD:}
 springdoc:
   default-consumes-media-type: application/json
   default-produces-media-type: application/json

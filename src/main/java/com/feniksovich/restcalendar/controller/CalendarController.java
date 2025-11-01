@@ -1,6 +1,6 @@
 package com.feniksovich.restcalendar.controller;
 
-import com.feniksovich.restcalendar.dto.calendar.CalendarData;
+import com.feniksovich.restcalendar.dto.CalendarDto;
 import com.feniksovich.restcalendar.service.CalendarService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -27,18 +27,17 @@ public class CalendarController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public CalendarData getCurrentCalendar() {
     @Operation(
             summary = "Получить календарь текущего года",
             description = "Возвращает календарь текущего года по серверному времени"
     )
     @ApiResponse(description = "Операция выполнена успешно")
+    public CalendarDto getCurrentCalendar() {
         return calendarService.getCalendar(Year.now().getValue());
     }
 
     @GetMapping("/{year}")
     @ResponseStatus(HttpStatus.OK)
-    public CalendarData getCalendarByYear(
     @Operation(
             summary = "Получить календарь по номеру года",
             description = "Возвращает календарь указанного года"
@@ -47,6 +46,7 @@ public class CalendarController {
             @ApiResponse(responseCode = "200", description = "Операция выполнена успешно"),
             @ApiResponse(responseCode = "400", description = "Номер года имеет неверный формат")
     })
+    public CalendarDto getCalendarByYear(
             @Positive(message = "must be positive number")
             @PathVariable int year
     ) {
