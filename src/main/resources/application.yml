@@ -6,3 +6,6 @@ spring:
     cache-names: [calendars]
     caffeine:
       spec: maximumSize=${CAL_CACHE_MAX_SIZE:100},expireAfterAccess=${CAL_CACHE_TTL:24h}
+springdoc:
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
