@@ -1,44 +1,16 @@
 # Calendar REST
 
-Сервис возвращает календарь для указанного года в григорианской системе. Реализовано на Spring Boot (Java 21) с временным in-memory кэшем на Caffeine.
+Сервис возвращает календарь для указанного года в григорианской системе. Реализовано на Spring Boot (Java 21) с временным сетевым кэшем на базе Redis с использованием Spring Cache.
+
+[Комментарии к изменениям ↗](COMMENTS.md)
 
 [К ответу на вопрос из задания ↓](#ответ-на-вопрос)
 
-## Эндпоинты
+## Документация к API
+После запуска приложения документация API доступна по адресам:
 
-- `GET /calendar/{year}`
-  - **Параметры пути**:
-    - `year` – положительное целое число (например, `2025`).
-  - **Коды ответа**:
-    - `200 OK` — успешный ответ с календарем
-    - `400 Bad Request` — если `year` не положительное число
-- `GET /calendar` - возвращает календарь текущего года по серверному времени.
-
-### Схема ответа
-
-```json
-{
-  "year": 2025,
-  "months": [
-    {
-      "number": 1,
-      "month": "JANUARY",
-      "days": [
-        { "number": 1, "dow": "WEDNESDAY"},
-        { "number": 2, "dow": "THURSDAY" }
-      ]
-    },
-    {
-      "number": 2,
-      "month": "FEBRUARY",
-      "days": [
-        { "number": 1, "dow": "SATURDAY" },
-        { "number": 2, "dow": "SUNDAY"   }
-      ]
-    }
-  ]
-}
-```
+- Swagger UI: http://localhost:8080/swagger-ui/index.html
+- OpenAPI JSON: http://localhost:8080/v3/api-docs
 
 ## Запуск в Docker
 
@@ -47,16 +19,13 @@
 git clone https://github.com/Feniksovich/calendar-rest
 cd calendar-rest
 ```
-2. **Сконфигурируйте параметры кэша в файле  окружения** `.env` *(опционально)*
+2. **Сконфигурируйте параметры в файле окружения** `.env`:
 ```bash
 cp .env.exmaple .env
 ```
 3. **Запустите контейнер с помощью Docker Compose**:
 ```bash
-docker compose up -d
-```
-```bash
-docker compose --env-file .env up -d
+docker compose up --build -d
 ```
 
 По умолчанию приложение доступно по адресу http://localhost:8080
